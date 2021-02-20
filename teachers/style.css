@@ -9,7 +9,7 @@ body {
 }
 section {
     width: 660px;
-    margin: auto;
+    margin: 0 auto;
 }
 .content-element {
     padding-bottom: 15px;
