@@ -59,7 +59,7 @@ a {
 @media (min-width: 1200px)
 {
     section {
-     width: 920px;
+        width: 920px;
     }
 }
 @media (max-width: 960px)
