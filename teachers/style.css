@@ -1,0 +1,76 @@
+body {
+    background:#dfb59980;
+    font-family: 'Marck Script', cursive;
+    font-size: 20px;
+}
+.tittle {
+    font-size: 30px;
+    text-align: center;
+}
+section {
+    width: 660px;
+    margin: auto;
+}
+.content-element {
+    padding-bottom: 15px;
+    width: 220px;
+}
+.teacher .content-element {
+    display: inline-block;
+}
+.content-element img {
+    width: 150px;
+    height: 210px;
+}
+.content-element img:hover {
+    border: 4px solid rgb(100, 59, 59);
+}
+.content-element img {
+    border: 4px solid transparent;
+}
+a {
+    color:#bc53f8;
+    text-decoration:none ;
+}
+::after {
+    display: block;
+    color: black;
+    cursor: text;
+}
+.name-1::after {
+    content: "зав.каф., професор, д.е.н.";
+}
+.name-2::after {
+    content: "професор, д.ф.-м.н.";
+}
+.name-3::after {
+    content: "професор, д.е.н.";
+}
+.name-4::after {
+    content: "професор, д.е.н.";
+}
+.name-5::after {
+    content: "професор, д.е.н.";
+}
+.name-6::after {
+    content: "доцент, к.е.н.";
+}
+
+@media (min-width: 1200px)
+{
+    section {
+     width: 920px;
+    }
+}
+@media (max-width: 960px)
+{
+    section {
+        width: 435px;
+    }
+}
+@media (max-width: 480px)
+{
+    section {
+        width: 155px;
+    }
+}
