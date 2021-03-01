@@ -1,0 +1,148 @@
+*{
+  box-sizing: border-box;
+}
+body {
+  margin: auto;
+  font-family: 'Balsamiq Sans', cursive;
+  font-weight: 350;
+}
+.box {
+  max-width: 950px;
+  margin: auto;
+  background: #b0f595;
+}
+.main-content {
+  display: flex;
+  justify-content: space-between;
+}
+img {
+  width: 300px;
+  height: 340px;
+}
+.name {
+  align-items: center;
+  height: 160px;
+  font-size: 30px;
+  color: rgb(192, 217, 253);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.part-of-left {
+  background: #38373d;
+  position: relative;
+  left: 650px;
+}
+.part-of-right {
+  max-width: 600px;
+  position: relative;
+  right: 300px;
+}
+.experience-content,
+.education-content{
+  display: flex;
+}
+li {
+  list-style-type: none;
+}
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+.date {
+  width: 275px;
+  border-right: 1px solid deepskyblue;
+}
+.date-item-second {
+  top: 90px;
+  position: relative;
+}
+.experience-text-first span,
+.experience-text-second span,
+.education-text-first span{
+  display: block;
+  margin-top: 10px;
+  font-size: 17px;
+}
+.tittle-experience::before {
+  margin-right: 10px;
+}
+.tittle-experience,
+.tittle-education,
+.tittle-hard-skills,
+.tittle-language,
+.tittle-soft-skills {
+  width: 550px;
+  border-bottom: 1px solid rgb(2, 160, 160);
+}
+.experience-text,
+.education-text{
+  padding: 0 50px 0 40px;
+}
+.size {
+  font-size: 22px;
+}
+.experience-text-second {
+  padding-top: 30px;
+}
+.tittle-education::before {
+  margin-right: 15px;
+}
+.date-first {
+width: 130px;
+border-right: 1px solid deepskyblue;
+}
+.tittle-hard-skills::before {
+  margin-right: 15px;
+}
+.hard-skills-item,
+.language-item {
+  margin-bottom: 10px;
+}
+.hard-skills-item::before,
+.language-item::before{
+  content: '-';
+  position: relative;
+  bottom: 2px;
+}
+.tittle-language::before {
+  margin-right: 15px;
+}
+.soft-skills-item::before {
+  content: "✔";
+  color: red;
+}
+.soft-skills-text {
+  margin-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 510px;
+  justify-content: space-around;
+}
+.contacts-tittle,
+.social-media-tittle{
+  height: 25px;
+  font-weight: bolder;
+  border-bottom: 2px solid cornflowerblue;
+  margin-left: 25px;
+  color: #32919d;
+  width: 225px;
+}
+.contacts-list,
+.media-list {
+  margin-left: 25px;
+}
+.location,
+.phone,
+.skype,
+.mail {
+  margin-bottom: 10px;
+  color: mediumseagreen;
+}
+.instagram {
+  margin-bottom: 10px;
+}
+a {
+  text-decoration: none;
+  color: mediumseagreen;
+}
