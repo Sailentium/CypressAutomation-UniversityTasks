@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+body {
+  margin: 0;
+}
+.container {
+  font-family: "Shippori Mincho", serif;
+  width: 1200px;
+  border-radius: 3%;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: seashell;
+}
+
+.right {
+  color: black;
+  background-color: rgba(0, 200, 0, 0.5);
+  border-radius: 5px;
+  padding-left: 5px;
+}
+.wrong {
+  background-color: rgb(255, 44, 55);
+  border-radius: 5px;
+  padding-left: 5px;
+}
+.hidden {
+  display: none;
+}
+
+.opend {
+  background-color: skyblue;
+}
+input,
+button {
+  cursor: pointer;
+}
+h2 {
+  margin: 0;
+  font-size: 40px;
+}
+.description {
+  color: black;
+  font-size: 20px;
+}
+.quetion {
+  color: black;
+  font-size: 30px;
+}
+span {
+  margin-left: 5px;
+}
+.item {
+  letter-spacing: 1.5px;
+  font-size: 23px;
+  color: darkblue;
+  text-align: initial;
+  margin-left: 385px;
+}
+.button1 {
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  background: blueviolet;
+  width: 160px;
+  height: 25px;
+  font-weight: bold;
+}
+.button2 {
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  background: mediumseagreen;
+  width: 160px;
+  height: 25px;
+  font-weight: bold;
+}
+.button3 {
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  background: brown;
+  width: 160px;
+  height: 25px;
+  font-weight: bold;
+}
+.top_img {
+  margin-bottom: 5px;
+}
+.top_img img {
+  margin: 0;
+  width: 600px;
+  height: 375px;
+}
+.right_div,
+.wrong {
+  color: black;
+  margin-left: 400px;
+  width: 400px;
+}
+p {
+  color: brown;
+  padding-bottom: 10px;
+  font-size: 25px;
+}
+.results {
+  width: 500px;
+  margin: 10px 360px 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.results ul {
+  list-style: none;
+}
+.results-list li:last-child {
+  margin-bottom: 7px;
+}
+.results-list {
+  border: 1px solid darkslateblue;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Решение простой задачи</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="title">Решение задачи по макроэкономике</h2>
+      <h3 class="task">
+        Определите национальный доход(НД), если: валовой внутренний продукт -
+        <b>ВВП</b>;сальдо первичных доходов - <b>Сальдо</b>;амортизация -
+        <b>А</b>; непрямые налоги - <b>Налоги</b>.
+      </h3>
+      <div class="task-content">
+        <h3>ВВП:</h3>
+        <input id="first" value="" autocomplete="off" />
+        <h3>Сальдо:</h3>
+        <input id="second" value="" autocomplete="off" />
+        <h3>А:</h3>
+        <input id="third" value="" autocomplete="off" />
+        <h3>Налоги:</h3>
+        <input id="fourth" value="" autocomplete="off" />
+      </div>
+      <div class="task-text">
+        <h3 class="formula">
+          НД = ВВП + Сальдо первичных доходов - Амортизация - Непрямые налоги
+        </h3>
+        <h3>
+          Национальный доход (НД, англ. national income, NI) — валовый доход,
+          созданный (заработанный) в результате использования принадлежащих
+          государству ресурсов как внутри страны, так и за границей.
+        </h3>
+        <h3>НД:</h3>
+        <p id="result"></p>
+      </div>
+      <div class="button">
+        <button id="btn">click</button>
+      </div>
+    </div>
+    <script src="js.js"></script>
+  </body>
+</html>

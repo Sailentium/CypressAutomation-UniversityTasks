@@ -1,0 +1,35 @@
+* {
+    font-size: 30px;
+}
+.container {
+    width: 700px;
+    margin: 0 auto;
+}
+button {
+    color: black;
+    font-size: 15px;
+    border-radius: 10px;
+    background: wheat;
+    width: 160px;
+    height: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.button {
+    display: flex;
+    justify-content: center;
+}
+h3 {
+    text-align: justify;
+}
+input {
+    text-align: center;
+    font-size: 20px;
+}
+.number {
+    display: block;
+}
+.answer {
+    display: block;
+}
+

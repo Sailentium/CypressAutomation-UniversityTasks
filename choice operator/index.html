@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Языки программирования</h1>
+
+      <h3 class="quest">
+        Какой из предложенных фрагментов кода написан на языке C++?
+      </h3>
+      <div class="img">
+        <div class="item">
+          <img src="img/JavaScript.png" alt="flag 1" />
+          <p>1</p>
+        </div>
+        <div class="item">
+          <img src="img/C++.png" alt="flag 1" />
+          <p>2</p>
+        </div>
+        <div class="item">
+          <img src="img/Python.png" alt="flag 1" />
+          <p>3</p>
+        </div>
+        <div class="item">
+          <img src="img/Pascal.png" alt="flag 1" />
+          <p>4</p>
+        </div>
+      </div>
+      <div class="input-style">
+        <p><input type="radio" name="color" id="f1" /> 1</p>
+        <p><input type="radio" name="color" id="f2" /> 2</p>
+        <p><input type="radio" name="color" id="f3" /> 3</p>
+        <p><input type="radio" name="color" id="f4" /> 4</p>
+      </div>
+      <button id="btn" class="answ">Ответить</button>
+
+      <div class="right_answ">
+        <p class="right hdn" id="right">Правильный ответ</p>
+      </div>
+
+      <div class="wrong hdn" id="wrong">
+        <div class="wrong-content">
+          <p class="wrong1" id="wrong1">Неправильный ответ</p>
+        </div>
+
+        <button class="answ2" id="btn1">Посмотреть ответ</button>
+      </div>
+      <p class="correct hdn" id="answer">2</p>
+    </div>
+    <script src="js.js"></script>
+  </body>
+</html>
