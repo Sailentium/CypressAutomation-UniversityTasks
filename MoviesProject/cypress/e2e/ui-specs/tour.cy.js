@@ -23,10 +23,19 @@ describe("Movie site is loading", () => {
         cy.get("[data-testid='movies-list-movie']").should('have.length', 1);
     })
 
-    it('Correct number of movies loaded', () => {
-        cy.get("[data-testid='movies-list-movie']").should('have.length', 20);
-        cy.get("[data-testid='movies-list-movie']").should('exist');
-        cy.get("[data-testid='movies-full-movie']").should('not.exist');
-    });
+it('Check that Filter exists and working', () => {
+    cy.get('input').should('exist');
+    cy.get('input').type('Testing');
+    cy.get("[data-testid='movies-list-movie']").should('not.exist');
+    cy.get('input').clear().type('Sonic');
+    cy.get("[data-testid='movies-list-movie']").should('exist');
+    cy.get("[data-testid='movies-list-movie']").should('have.length', 1);
+})
+
+it('Correct number of movies loaded', () => {
+    cy.get("[data-testid='movies-list-movie']").should('have.length', 20);
+    cy.get("[data-testid='movies-list-movie']").should('exist');
+    cy.get("[data-testid='movies-full-movie']").should('not.exist');
+});
 
 })
