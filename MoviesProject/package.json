@@ -17,6 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "e2e": "cypress run --headless",
     "test": "cypress open",
     "eject": "react-scripts eject"
   },
@@ -40,6 +41,8 @@
   },
   "devDependencies": {
     "cypress": "^10.3.0",
-    "eslint-plugin-cypress": "^2.12.1"
+    "del": "^7.0.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "lodash": "^4.17.21"
   }
 }
