@@ -3,10 +3,12 @@ jobs:
   build:
     docker:
       - image: circleci/node:16.0-browsers
-    working_directory: ~/repo
+    working_directory: ~/MoviesProject
 workflows:
   build:
     jobs:
+      - cypress/install:
+      
       - cypress/run:
           requires:
             - cypress/install
