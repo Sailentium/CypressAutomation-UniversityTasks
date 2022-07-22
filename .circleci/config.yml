@@ -1,16 +1,13 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/node:16.0-browsers
-    working_directory: ~/MoviesProject
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
 workflows:
   build:
     jobs:
       - cypress/install:
-      
       - cypress/run:
           requires:
             - cypress/install
+          working_directory: ~/MoviesProject
           start: npm start
           wait-on: "http://localhost:3000"
