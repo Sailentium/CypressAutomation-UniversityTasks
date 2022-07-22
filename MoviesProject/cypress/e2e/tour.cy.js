@@ -1,52 +1,44 @@
+import moviesList from "../fixtures/moviesList.json";
+import { createTestData } from "../support/steps/apiSteps";
+
 describe("Movie site testing", () => {
+  before(() => {
+    createTestData();
+  });
+
   beforeEach(() => {
-    const moviesListUrl =
-      "https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&api_key=";
-
-    const configUrl =
-      "https://api.themoviedb.org/3/configuration?api_key=06f11504a80ab5304c3b296affa8b777";
-
-    cy.intercept(moviesListUrl, {
-      fixture: "moviesList",
-    });
-    cy.intercept(configUrl, {
-      fixture: "config",
-    });
-    cy.visit("http://localhost:3000/");
+    cy.visit(Cypress.config('baseUrl'));
     cy.contains("Filter");
   });
 
   it("Page of the first movie loading correctly", () => {
+    const firstMovieTitle = moviesList.results[0].title;
     cy.get("[data-testid='movies-list-movie']")
       .first()
       .then((movie) => {
         const firstMovieUrl = movie.attr("href");
         cy.get("[data-testid='movies-list-movie']").first().click();
-        cy.url().should("eq", "http://localhost:3000" + firstMovieUrl);
+        cy.url().should("eq", Cypress.config('baseUrl') + firstMovieUrl);
         cy.url().should("include", firstMovieUrl);
       });
+    cy.contains("h1", firstMovieTitle);
   });
 
   it("Check that Filter exists and working", () => {
+    const thirdMovieTitle = moviesList.results[2].title;
     cy.get("input").should("exist");
     cy.get("input").type("Testing");
     cy.get("[data-testid='movies-list-movie']").should("not.exist");
-    cy.get("input").clear().type("Sonic");
+    cy.get("input").clear().type(`${thirdMovieTitle}`);
     cy.get("[data-testid='movies-list-movie']").should("exist");
     cy.get("[data-testid='movies-list-movie']").should("have.length", 1);
+    cy.get("[data-testid='movies-list-movie']").click();
+    cy.contains("h1", thirdMovieTitle);
   });
 
   it("Correct number of movies loaded", () => {
     cy.get("[data-testid='movies-list-movie']").should("have.length", 20);
     cy.get("[data-testid='movies-list-movie']").should("exist");
     cy.get("[data-testid='movies-full-movie']").should("not.exist");
-  });
-
-  it("Testing the second movie attributies with fixture", () => {
-    cy.fixture("moviesList").then((jsonData) => {
-      expect(jsonData.results[1].title).to.eq("Jurassic World Dominion");
-      expect(jsonData.results[1].original_language).to.eq("en");
-      expect(jsonData.results[1].id).to.eq(507086);
-    });
   });
 });
