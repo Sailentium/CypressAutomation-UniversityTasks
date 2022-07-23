@@ -1,21 +1,69 @@
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1
-steps:
-  - checkout:
-    path: ~/SmallProjects/MoviesProject & pwd
-  - restore_cache:
-    keys:
-      - v1-dependencies-{{ checksum "MoviesProject/package.json" }}
-      - v1-dependencies-
-  - run: npm install
-workflows:
-  build:
-    jobs:
-      - cypress/install
-      - cypress/run:
-          requires:
-            - cypress/install
-          working_directory: ~/SmallProjects/MoviesProject
-          start: npm start
-          wait-on: "http://localhost:3000"
+  cypress: cypress-io/cypress@2.0.0
+  codecov: codecov/codecov@1.2.3 #
+  win: circleci/windows@4.1.1
+
+executors:
+  with-chrome-and-firefox:
+    docker:
+      - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
+    resource_class: large
+    environment:
+      PERCY_TOKEN:
+      CYPRESS_coverage: false
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+commands:
+  report-coverage:
+    description: |
+      Store coverage report as an artifact and send it to Codecov service.
+    steps:
+      - store_artifacts:
+          path: coverage
+      - run: npx nyc report --reporter=text || true
+      - codecov/upload:
+          file: coverage/coverage-final.json
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Workflows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+linux-workflow: &linux-workflow
+  jobs:
+    # Setup
+    #  1. Install Cypress
+    #  2. Validate types
+    #  3. Run server unit-tests
+    - cypress/install:
+        name: "Setup Linux"
+        yarn: true
+        executor: with-chrome-and-firefox
+        build: "yarn build:ci"
+        post-steps:
+          - run:
+              name: Print machine info ℹ️
+              command: yarn cypress info
+          - run:
+              name: Check Types
+              command: yarn types
+          - run:
+              name: Lint Files
+              command: yarn lint
+          - run:
+              name: Run Unit Tests
+              command: yarn test:unit:ci
+
+    # Run E2E tests in Chrome
+    - cypress/run:
+        name: "UI Tests - Chrome"
+        browser: chrome
+        spec: cypress/e2e/*
+        executor: with-chrome-and-firefox
+        wait-on: "http://localhost:3000"
+        command-prefix: npx percy exec --
+        yarn: true
+        start: yarn start:ci
+        ci-build-id: ${CIRCLE_SHA1:0:8}
+        group: "UI - Chrome"
+        requires:
+          - Setup Linux
+        post-steps:
+          - report-coverage
