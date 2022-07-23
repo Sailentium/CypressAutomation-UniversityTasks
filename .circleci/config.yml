@@ -2,28 +2,12 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@2.0.0
   codecov: codecov/codecov@1.2.3 #
-  win: circleci/windows@4.1.1
 
 executors:
   with-chrome-and-firefox:
     docker:
       - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
     resource_class: large
-    environment:
-      PERCY_TOKEN:
-      CYPRESS_coverage: false
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-commands:
-  report-coverage:
-    description: |
-      Store coverage report as an artifact and send it to Codecov service.
-    steps:
-      - store_artifacts:
-          path: coverage
-      - run: npx nyc report --reporter=text || true
-      - codecov/upload:
-          file: coverage/coverage-final.json
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Workflows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 linux-workflow: &linux-workflow
@@ -47,9 +31,6 @@ linux-workflow: &linux-workflow
           - run:
               name: Lint Files
               command: yarn lint
-          - run:
-              name: Run Unit Tests
-              command: yarn test:unit:ci
 
     # Run E2E tests in Chrome
     - cypress/run:
@@ -65,5 +46,7 @@ linux-workflow: &linux-workflow
         group: "UI - Chrome"
         requires:
           - Setup Linux
-        post-steps:
-          - report-coverage
+
+workflows:
+  linux:
+    <<: *linux-workflow
