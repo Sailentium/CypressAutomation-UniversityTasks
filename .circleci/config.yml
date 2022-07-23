@@ -16,7 +16,6 @@ workflows:
         name: "Setup Linux"
         yarn: true
         executor: with-chrome-and-firefox
-        build: "npm run start"
 
     - cypress/run:
         name: "UI Tests - Chrome"
@@ -24,10 +23,8 @@ workflows:
         spec: cypress/e2e/*
         executor: with-chrome-and-firefox
         wait-on: "http://localhost:3000"
-        command-prefix: npx percy exec --
         yarn: true
-        start: npm run e2e
+        start: npm run start
         ci-build-id: ${CIRCLE_SHA1:0:8}
-        group: "UI - Chrome"
         requires:
           - Setup Linux
