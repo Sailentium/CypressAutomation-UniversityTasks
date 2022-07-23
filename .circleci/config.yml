@@ -21,16 +21,6 @@ linux-workflow: &linux-workflow
         yarn: true
         executor: with-chrome-and-firefox
         build: "npm start"
-        post-steps:
-          - run:
-              name: Print machine info ℹ️
-              command: yarn cypress info
-          - run:
-              name: Check Types
-              command: yarn types
-          - run:
-              name: Lint Files
-              command: yarn lint
 
     # Run E2E tests in Chrome
     - cypress/run:
