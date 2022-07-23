@@ -9,20 +9,15 @@ executors:
       - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
     resource_class: large
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Workflows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-linux-workflow: &linux-workflow
-  jobs:
-    # Setup
-    #  1. Install Cypress
-    #  2. Validate types
-    #  3. Run server unit-tests
+workflows:
+  cypress:
+    jobs:
     - cypress/install:
         name: "Setup Linux"
         yarn: true
         executor: with-chrome-and-firefox
-        build: "npm start"
+        build: "npm run start"
 
-    # Run E2E tests in Chrome
     - cypress/run:
         name: "UI Tests - Chrome"
         browser: chrome
@@ -36,7 +31,3 @@ linux-workflow: &linux-workflow
         group: "UI - Chrome"
         requires:
           - Setup Linux
-
-workflows:
-  linux:
-    <<: *linux-workflow
