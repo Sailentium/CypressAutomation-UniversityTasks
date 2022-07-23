@@ -20,7 +20,7 @@ linux-workflow: &linux-workflow
         name: "Setup Linux"
         yarn: true
         executor: with-chrome-and-firefox
-        build: "npm run e2e"
+        build: "npm start"
         post-steps:
           - run:
               name: Print machine info ℹ️
@@ -41,7 +41,7 @@ linux-workflow: &linux-workflow
         wait-on: "http://localhost:3000"
         command-prefix: npx percy exec --
         yarn: true
-        start: npm start
+        start: npm run e2e
         ci-build-id: ${CIRCLE_SHA1:0:8}
         group: "UI - Chrome"
         requires:
