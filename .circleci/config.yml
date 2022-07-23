@@ -6,6 +6,7 @@ executors:
     resource_class: small
     docker:
       - image: "cypress/browsers:node14.16.0-chrome90-ff88"
+    working_directory: ~/MoviesProject
 workflows:
   build:
     jobs:
@@ -15,7 +16,6 @@ workflows:
             - cypress/install
           executor: with-chrome
           browser: chrome
-          working_directory: ~/MoviesProject
           cache-key: 'cache-{{ arch }}-{{ .Branch }}-{{ checksum "MoviesProject/package.json" }}'
           start: npm start
           wait-on: "http://localhost:3000"
