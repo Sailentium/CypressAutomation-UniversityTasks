@@ -8,7 +8,7 @@ workflows:
       - cypress/run:
           requires:
             - cypress/install
-          working_directory: MoviesProject
+          working_directory: ~/MoviesProject
           cache-key: 'cache-{{ arch }}-{{ .Branch }}-{{ checksum "MoviesProject/package.json" }}'
           start: npm start
           wait-on: "http://localhost:3000"
